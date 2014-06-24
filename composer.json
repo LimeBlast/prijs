@@ -18,6 +18,7 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php"
 		],
+		"files": ["app/Prijs/helpers.php"],
 		"psr-4": {
 			"Prijs\\": "app/Prijs"
 		}

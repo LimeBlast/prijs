@@ -1,4 +1,6 @@
-@extends('layout')
+@extends('layouts.master')
+
+@section('page-title', 'Register')
 
 @section('content')
 
@@ -11,7 +13,7 @@
 		{{ Former::password('password')->required() }}
 		{{ Former::password('password_confirmation')->required() }}
 
-		{{ Former::actions()->large_primary_submit('Submit')->large_inverse_reset('Reset') }}
+		{{ Former::actions()->primary_submit('Submit')->inverse_reset('Reset') }}
 
 	{{Former::close()}}
 

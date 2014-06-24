@@ -1,79 +1,55 @@
 <?php
 
+use Prijs\Forms\LoginForm;
+
 class SessionsController extends \BaseController {
 
 	/**
-	 * Display a listing of the resource.
-	 * GET /sessions
-	 *
-	 * @return Response
+	 * @var Prijs\Forms\LoginForm
 	 */
-	public function index()
+	private $loginForm;
+
+	function __construct(LoginForm $loginForm)
 	{
-		//
+		$this->loginForm = $loginForm;
 	}
 
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /sessions/create
+	 * GET /login
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		//
+		return View::make('sessions.create');
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 * POST /sessions
+	 * POST /login
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
-	}
+		$input = Input::only('email', 'password');
 
-	/**
-	 * Display the specified resource.
-	 * GET /sessions/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+		$this->loginForm->validate($input);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /sessions/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+		if (Auth::attempt($input)) {
+			return Redirect::intended('/');
+		}
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /sessions/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
+		return Redirect::back()->withInput()->withFlashMessage('Invalid credentials provided');
 	}
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /sessions/{id}
+	 * DELETE /sessions
+	 * GET /logout
 	 *
 	 * @return Response
 	 */

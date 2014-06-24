@@ -1,4 +1,4 @@
-<?php  namespace Prijs\Forms;
+<?php namespace Prijs\Forms;
 
 use Laracasts\Validation\FormValidator;
 
@@ -10,4 +10,4 @@ class RegistrationForm extends FormValidator {
 		'password' => 'required|confirmed',
 	];
 
-} 
+}
