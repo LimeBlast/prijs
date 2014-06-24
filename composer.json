@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"laracasts/validation": "~1.0",
-		"barryvdh/laravel-ide-helper": "1.*"
+		"barryvdh/laravel-ide-helper": "1.*",
+		"anahkiasen/former": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

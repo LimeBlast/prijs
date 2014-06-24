@@ -2,44 +2,17 @@
 
 @section('content')
 
-	<div class="starter-template">
-		<h1>Register</h1>
+	<h1>Register</h1>
 
-		{{ Form::open(['registration.store']) }}
+	{{ Former::open() }}
 
-			<!-- Username Field -->
-			<div class="form-group">
-				{{ Form::label('username', 'Username') }}
-				{{ Form::text('username', null, ['class' => 'form-control', 'required' => 'required']) }}
-				{{ $errors->first('username', '<span class="error">:message</span>') }}
-			</div>
+		{{ Former::text('username')->required() }}
+		{{ Former::email('email')->required() }}
+		{{ Former::password('password')->required() }}
+		{{ Former::password('password_confirmation')->required() }}
 
-			<!-- Email Field -->
-			<div class="form-group">
-				{{ Form::label('email', 'Email') }}
-				{{ Form::email('email', null, ['class' => 'form-control', 'required' => 'required']) }}
-				{{ $errors->first('email', '<span class="error">:message</span>') }}
-			</div>
+		{{ Former::actions()->large_primary_submit('Submit')->large_inverse_reset('Reset') }}
 
-			<!-- Password Field -->
-			<div class="form-group">
-				{{ Form::label('password', 'Password') }}
-				{{ Form::password('password', ['class' => 'form-control', 'required' => 'required']) }}
-				{{ $errors->first('password', '<span class="error">:message</span>') }}
-			</div>
-
-			<!-- Password Confirmation Field -->
-			<div class="form-group">
-				{{ Form::label('password_confirmation', 'Password Confirmation') }}
-				{{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required']) }}
-			</div>
-
-			<!-- Create Account Button -->
-			<div class="form-group">
-				{{ Form::submit('Create Account', ['class' => 'btn btn-primary']) }}
-			</div>
-
-		{{ Form::close() }}
-	</div>
+	{{Former::close()}}
 
 @stop
