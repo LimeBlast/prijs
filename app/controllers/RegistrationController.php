@@ -1,6 +1,17 @@
 <?php
 
+use Prijs\Forms\RegistrationForm;
+
 class RegistrationController extends \BaseController {
+	/**
+	 * @var RegistrationForm
+	 */
+	private $registrationForm;
+
+	function __construct(RegistrationForm $registrationForm)
+	{
+		$this->registrationForm = $registrationForm;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -32,7 +43,11 @@ class RegistrationController extends \BaseController {
 	 */
 	public function store()
 	{
-		$user = User::create(Input::only('username', 'email', 'password'));
+		$input = Input::only('username', 'email', 'password', 'password_confirmation');
+
+		$this->registrationForm->validate($input);
+
+		$user = User::create($input);
 
 		Auth::login($user);
 
@@ -43,7 +58,8 @@ class RegistrationController extends \BaseController {
 	 * Display the specified resource.
 	 * GET /registration/{id}
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 *
 	 * @return Response
 	 */
 	public function show($id)
@@ -55,7 +71,8 @@ class RegistrationController extends \BaseController {
 	 * Show the form for editing the specified resource.
 	 * GET /registration/{id}/edit
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 *
 	 * @return Response
 	 */
 	public function edit($id)
@@ -67,7 +84,8 @@ class RegistrationController extends \BaseController {
 	 * Update the specified resource in storage.
 	 * PUT /registration/{id}
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 *
 	 * @return Response
 	 */
 	public function update($id)
@@ -79,7 +97,8 @@ class RegistrationController extends \BaseController {
 	 * Remove the specified resource from storage.
 	 * DELETE /registration/{id}
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 *
 	 * @return Response
 	 */
 	public function destroy($id)
