@@ -125,6 +125,7 @@ return array(
 		/* Additional service providers */
 		'Laracasts\Validation\ValidationServiceProvider',
 		'Former\FormerServiceProvider',
+		'Krucas\Notification\NotificationServiceProvider',
 
 		/* Development service providers */
 		'Way\Generators\GeneratorsServiceProvider',
@@ -198,6 +199,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 		'Former'          => 'Former\Facades\Former',
+		'Notification'    => 'Krucas\Notification\Facades\Notification',
 
 	),
 

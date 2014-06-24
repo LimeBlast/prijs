@@ -40,10 +40,12 @@ class SessionsController extends \BaseController {
 		$this->loginForm->validate($input);
 
 		if (Auth::attempt($input)) {
+			Notification::success("Successfully signed in.");
 			return Redirect::intended('/');
 		}
 
-		return Redirect::back()->withInput()->withFlashMessage('Invalid credentials provided');
+		Notification::info("Invalid credentials provided");
+		return Redirect::back()->withInput();
 	}
 
 	/**

@@ -1,14 +1,10 @@
 @extends('layouts.master')
 
-@section('page-title', 'Login')
+@section('page-title', 'Login | @parent')
 
 @section('content')
 
 	<h1>Login</h1>
-
-	@if (Session::has('flash_message'))
-		<div class="alert alert-warning">{{ Session::get('flash_message') }}</div>
-	@endif
 
 	{{ Former::open() }}
 
