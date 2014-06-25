@@ -1,11 +1,11 @@
 <?php
 
-use Prijs\Forms\RegistrationForm;
+use Prijs\Service\Form\RegistrationForm;
 
 class RegistrationController extends \BaseController {
 
 	/**
-	 * @var Prijs\Forms\RegistrationForm
+	 * @var Prijs\Service\Form\RegistrationForm
 	 */
 	private $registrationForm;
 

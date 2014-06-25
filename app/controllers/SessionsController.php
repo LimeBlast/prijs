@@ -1,11 +1,11 @@
 <?php
 
-use Prijs\Forms\LoginForm;
+use Prijs\Service\Form\LoginForm;
 
 class SessionsController extends \BaseController {
 
 	/**
-	 * @var Prijs\Forms\LoginForm
+	 * @var Prijs\Service\Form\LoginForm
 	 */
 	private $loginForm;
 

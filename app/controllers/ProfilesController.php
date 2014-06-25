@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Prijs\Forms\ProfileForm;
+use Prijs\Service\Form\ProfileForm;
 
 class ProfilesController extends \BaseController {
 
 	/**
-	 * @var ProfileForm
+	 * @var Prijs\Service\Form\ProfileForm
 	 */
 	private $profileForm;
 
