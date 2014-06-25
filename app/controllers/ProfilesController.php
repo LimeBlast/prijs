@@ -1,18 +1,18 @@
 <?php
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Prijs\Service\Form\ProfileForm;
+use Prijs\Service\Validation\ProfileValidator;
 
 class ProfilesController extends \BaseController {
 
 	/**
-	 * @var Prijs\Service\Form\ProfileForm
+	 * @var Prijs\Service\Validation\ProfileValidator
 	 */
-	private $profileForm;
+	private $profileValidator;
 
-	function __construct(ProfileForm $profileForm)
+	function __construct(ProfileValidator $profileValidator)
 	{
-		$this->profileForm = $profileForm;
+		$this->profileValidator = $profileValidator;
 
 		$this->beforeFilter('currentUser', ['only' => ['edit', 'update']]);
 	}
@@ -63,7 +63,7 @@ class ProfilesController extends \BaseController {
 
 		$input = Input::only('location', 'bio');
 
-		$this->profileForm->validate($input);
+		$this->profileValidator->validate($input);
 
 		$user->profile->fill($input)->save();
 

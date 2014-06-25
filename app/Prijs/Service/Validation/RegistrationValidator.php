@@ -1,8 +1,8 @@
-<?php namespace Prijs\Service\Form;
+<?php namespace Prijs\Service\Validation;
 
 use Laracasts\Validation\FormValidator;
 
-class RegistrationForm extends FormValidator {
+class RegistrationValidator extends FormValidator {
 
 	protected $rules = [
 		'username' => 'required|unique:users',

@@ -1,17 +1,17 @@
 <?php
 
-use Prijs\Service\Form\RegistrationForm;
+use Prijs\Service\Validation\RegistrationValidator;
 
 class RegistrationController extends \BaseController {
 
 	/**
-	 * @var Prijs\Service\Form\RegistrationForm
+	 * @var Prijs\Service\Validation\RegistrationValidator
 	 */
-	private $registrationForm;
+	private $registrationValidator;
 
-	function __construct(RegistrationForm $registrationForm)
+	function __construct(RegistrationValidator $registrationValidator)
 	{
-		$this->registrationForm = $registrationForm;
+		$this->registrationValidator = $registrationValidator;
 	}
 
 	/**
@@ -37,7 +37,7 @@ class RegistrationController extends \BaseController {
 	{
 		$input = Input::only('username', 'email', 'password', 'password_confirmation');
 
-		$this->registrationForm->validate($input);
+		$this->registrationValidator->validate($input);
 
 		$user = User::create($input);
 

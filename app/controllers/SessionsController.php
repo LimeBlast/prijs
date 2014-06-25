@@ -1,17 +1,17 @@
 <?php
 
-use Prijs\Service\Form\LoginForm;
+use Prijs\Service\Validation\LoginValidator;
 
 class SessionsController extends \BaseController {
 
 	/**
-	 * @var Prijs\Service\Form\LoginForm
+	 * @var Prijs\Service\Validation\LoginValidator
 	 */
-	private $loginForm;
+	private $loginValidator;
 
-	function __construct(LoginForm $loginForm)
+	function __construct(LoginValidator $loginValidator)
 	{
-		$this->loginForm = $loginForm;
+		$this->loginValidator = $loginValidator;
 	}
 
 	/**
@@ -37,7 +37,7 @@ class SessionsController extends \BaseController {
 	{
 		$input = Input::only('email', 'password');
 
-		$this->loginForm->validate($input);
+		$this->loginValidator->validate($input);
 
 		if (Auth::attempt($input)) {
 			Notification::success("Successfully signed in.");
