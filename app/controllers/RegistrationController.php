@@ -1,5 +1,6 @@
 <?php
 
+use Prijs\Repository\User\UserInterface;
 use Prijs\Service\Form\RegistrationValidator;
 
 class RegistrationController extends \BaseController {
@@ -9,8 +10,14 @@ class RegistrationController extends \BaseController {
 	 */
 	private $registrationValidator;
 
-	public function __construct(RegistrationValidator $registrationValidator)
+	/**
+	 * @var Prijs\Repository\User\UserInterface
+	 */
+	private $User;
+
+	public function __construct(UserInterface $User, RegistrationValidator $registrationValidator)
 	{
+		$this->User = $User;
 		$this->registrationValidator = $registrationValidator;
 	}
 
@@ -35,13 +42,11 @@ class RegistrationController extends \BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::only('username', 'email', 'password', 'password_confirmation');
+		$input = Input::all();
 
 		$this->registrationValidator->validate($input);
 
-		$user = User::create($input);
-
-		Auth::login($user);
+		$this->User->create($input);
 
 		return Redirect::home();
 	}

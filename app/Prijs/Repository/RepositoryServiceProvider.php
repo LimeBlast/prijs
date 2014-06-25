@@ -3,6 +3,7 @@
 use Illuminate\Support\ServiceProvider;
 use Prijs\Repository\User\EloquentUser;
 use User;
+use Profile;
 
 class RepositoryServiceProvider extends ServiceProvider {
 
@@ -15,7 +16,8 @@ class RepositoryServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind('Prijs\Repository\User\UserInterface', function () {
 			return new EloquentUser(
-				new User
+				new User,
+				new Profile
 			);
 		});
 	}
