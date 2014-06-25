@@ -1,7 +1,7 @@
 <?php namespace Prijs\Repository;
 
 use Illuminate\Support\ServiceProvider;
-use Prijs\Repository\Profile\EloquentProfile;
+use Prijs\Repository\User\EloquentUser;
 use User;
 
 class RepositoryServiceProvider extends ServiceProvider {
@@ -13,8 +13,8 @@ class RepositoryServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind('Prijs\Repository\Profile\ProfileInterface', function () {
-			return new EloquentProfile(
+		$this->app->bind('Prijs\Repository\User\UserInterface', function () {
+			return new EloquentUser(
 				new User
 			);
 		});
