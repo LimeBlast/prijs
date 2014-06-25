@@ -10,7 +10,7 @@ class ProfilesController extends \BaseController {
 	 */
 	private $profileValidator;
 
-	function __construct(ProfileValidator $profileValidator)
+	public function __construct(ProfileValidator $profileValidator)
 	{
 		$this->profileValidator = $profileValidator;
 

@@ -9,7 +9,7 @@ class SessionsController extends \BaseController {
 	 */
 	private $loginValidator;
 
-	function __construct(LoginValidator $loginValidator)
+	public function __construct(LoginValidator $loginValidator)
 	{
 		$this->loginValidator = $loginValidator;
 	}

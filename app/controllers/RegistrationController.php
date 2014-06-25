@@ -9,7 +9,7 @@ class RegistrationController extends \BaseController {
 	 */
 	private $registrationValidator;
 
-	function __construct(RegistrationValidator $registrationValidator)
+	public function __construct(RegistrationValidator $registrationValidator)
 	{
 		$this->registrationValidator = $registrationValidator;
 	}
