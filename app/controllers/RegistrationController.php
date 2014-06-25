@@ -1,11 +1,11 @@
 <?php
 
-use Prijs\Service\Validation\RegistrationValidator;
+use Prijs\Service\Form\RegistrationValidator;
 
 class RegistrationController extends \BaseController {
 
 	/**
-	 * @var Prijs\Service\Validation\RegistrationValidator
+	 * @var Prijs\Service\Form\RegistrationValidator
 	 */
 	private $registrationValidator;
 

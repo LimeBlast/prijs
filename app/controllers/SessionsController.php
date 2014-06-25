@@ -1,11 +1,11 @@
 <?php
 
-use Prijs\Service\Validation\LoginValidator;
+use Prijs\Service\Form\LoginValidator;
 
 class SessionsController extends \BaseController {
 
 	/**
-	 * @var Prijs\Service\Validation\LoginValidator
+	 * @var Prijs\Service\Form\LoginValidator
 	 */
 	private $loginValidator;
 

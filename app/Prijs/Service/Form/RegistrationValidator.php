@@ -1,4 +1,4 @@
-<?php namespace Prijs\Service\Validation;
+<?php namespace Prijs\Service\Form;
 
 use Laracasts\Validation\FormValidator;
 

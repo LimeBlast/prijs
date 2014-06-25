@@ -1,7 +1,7 @@
 <?php
 
 # Home
-Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
+Route::get('/', 'HomeController@showWelcome');
 
 # Registration
 Route::get('/register', ['as' => 'registration.create', 'uses' => 'RegistrationController@create'])->before('guest');

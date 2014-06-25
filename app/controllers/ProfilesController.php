@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Prijs\Service\Validation\ProfileValidator;
+use Prijs\Service\Form\ProfileValidator;
 
 class ProfilesController extends \BaseController {
 
 	/**
-	 * @var Prijs\Service\Validation\ProfileValidator
+	 * @var Prijs\Service\Form\ProfileValidator
 	 */
 	private $profileValidator;
 
