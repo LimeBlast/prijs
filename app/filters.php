@@ -88,11 +88,3 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
-
-Route::filter('currentUser', function ($route) {
-	// reject if guest
-	if (Auth::guest()) return App::abort(403);
-
-	// reject if not editing current user
-	if (Auth::user()->username == $this->paramater('profile')) return App::abort(403);
-});

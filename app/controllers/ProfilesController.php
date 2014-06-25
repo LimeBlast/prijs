@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Prijs\Repository\Profile\ProfileInterface;
 use Prijs\Service\Form\ProfileValidator;
 
 class ProfilesController extends \BaseController {
@@ -9,12 +10,15 @@ class ProfilesController extends \BaseController {
 	 * @var Prijs\Service\Form\ProfileValidator
 	 */
 	private $profileValidator;
+	/**
+	 * @var Prijs\Repository\Profile\ProfileInterface
+	 */
+	private $profile;
 
-	public function __construct(ProfileValidator $profileValidator)
+	public function __construct(ProfileInterface $profile, ProfileValidator $profileValidator)
 	{
+		$this->profile = $profile;
 		$this->profileValidator = $profileValidator;
-
-		$this->beforeFilter('currentUser', ['only' => ['edit', 'update']]);
 	}
 
 	/**
@@ -26,9 +30,9 @@ class ProfilesController extends \BaseController {
 	 */
 	public function show($username)
 	{
-		try {
-			$user = User::with('Profile')->whereUsername($username)->firstOrFail();
-		} catch (ModelNotFoundException $e) {
+		$user = $this->profile->byUsername($username);
+
+		if (!$user) {
 			App::abort(404);
 		}
 
@@ -44,9 +48,9 @@ class ProfilesController extends \BaseController {
 	 */
 	public function edit($username)
 	{
-		try {
-			$user = User::with('Profile')->whereUsername($username)->firstOrFail();
-		} catch (ModelNotFoundException $e) {
+		$user = $this->profile->byUsername($username);
+
+		if (!$user) {
 			App::abort(404);
 		}
 

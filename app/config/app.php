@@ -122,12 +122,15 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-		/* Additional service providers */
+		/* service providers */
+		'Prijs\Repository\RepositoryServiceProvider',
+
+		/* external service providers */
 		'Laracasts\Validation\ValidationServiceProvider',
 		'Former\FormerServiceProvider',
 		'Krucas\Notification\NotificationServiceProvider',
 
-		/* Development service providers */
+		/* development service providers */
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
