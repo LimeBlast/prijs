@@ -21,12 +21,12 @@ class RegistrationForm {
 	public function __construct(ValidationInterface $validator, UserInterface $user)
 	{
 		$this->validator = $validator;
-		$this->user      = $user;
+		$this->user = $user;
 	}
 
 	public function save(array $input)
 	{
-		if (!$this->validator->passes($input)) {
+		if (!$this->valid($input)) {
 			return false;
 		}
 
