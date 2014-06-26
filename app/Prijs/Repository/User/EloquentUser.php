@@ -56,8 +56,8 @@ class EloquentUser implements UserInterface {
 			'bio'      => $data['profile']['bio']
 		]);
 
-		$profile->user()->associate($user);
-		$profile->save();
+		$user->profile()->save($profile);
+		$user->save();
 
 		return true;
 	}
