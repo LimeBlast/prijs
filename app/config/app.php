@@ -124,6 +124,7 @@ return array(
 
 		/* service providers */
 		'Prijs\Repository\RepositoryServiceProvider',
+		'Prijs\Service\Form\FormServiceProvider',
 
 		/* external service providers */
 		'Laracasts\Validation\ValidationServiceProvider',

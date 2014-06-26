@@ -1,22 +1,27 @@
 <?php namespace Prijs\Repository\User;
 
-use Illuminate\Database\Eloquent\Model;
+use Profile;
+use User;
 
 class EloquentUser implements UserInterface {
 
 	/**
 	 * @var \Illuminate\Database\Eloquent\Model
 	 */
-	private $userModel;
+	private $user;
 	/**
 	 * @var \Illuminate\Database\Eloquent\Model
 	 */
-	private $profileModel;
+	private $profile;
 
-	public function __construct(Model $userModel, Model $profileModel)
+	/**
+	 * @param User    $user
+	 * @param Profile $profile
+	 */
+	public function __construct(User $user, Profile $profile)
 	{
-		$this->userModel = $userModel;
-		$this->profileModel = $profileModel;
+		$this->user    = $user;
+		$this->profile = $profile;
 	}
 
 	/**
@@ -28,7 +33,7 @@ class EloquentUser implements UserInterface {
 	 */
 	public function byUsername($username)
 	{
-		return $this->userModel
+		return $this->user
 			->with('Profile')
 			->whereUsername($username)
 			->first();
@@ -44,14 +49,16 @@ class EloquentUser implements UserInterface {
 	public function create(array $data)
 	{
 		// Create the user
-		$user = $this->userModel->create([
+		$user = $this->user->create(
+			[
 			'username' => $data['username'],
 			'email'    => $data['email'],
 			'password' => $data['password']
 		]);
 
 		// Create the profile
-		$profile = $this->profileModel->create([
+		$profile = $this->profile->create(
+			[
 			'location' => $data['profile']['location'],
 			'bio'      => $data['profile']['bio']
 		]);

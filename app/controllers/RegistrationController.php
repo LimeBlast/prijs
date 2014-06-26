@@ -1,7 +1,8 @@
 <?php
 
 use Prijs\Repository\User\UserInterface;
-use Prijs\Service\Form\RegistrationValidator;
+use Prijs\Service\Form\Registration\RegistrationForm;
+use Prijs\Service\Form\Registration\RegistrationValidator;
 
 class RegistrationController extends \BaseController {
 
@@ -13,12 +14,22 @@ class RegistrationController extends \BaseController {
 	/**
 	 * @var Prijs\Repository\User\UserInterface
 	 */
-	private $User;
+	private $user;
+	/**
+	 * @var Prijs\Service\Form\Registration\RegistrationForm
+	 */
+	private $registrationForm;
 
-	public function __construct(UserInterface $User, RegistrationValidator $registrationValidator)
+	/**
+	 * @param UserInterface         $user
+	 * @param RegistrationValidator $registrationValidator
+	 * @param RegistrationForm      $registrationForm
+	 */
+	public function __construct(UserInterface $user, RegistrationValidator $registrationValidator, RegistrationForm $registrationForm)
 	{
-		$this->User = $User;
+		$this->user                  = $user;
 		$this->registrationValidator = $registrationValidator;
+		$this->registrationForm      = $registrationForm;
 	}
 
 	/**
@@ -44,11 +55,14 @@ class RegistrationController extends \BaseController {
 	{
 		$input = Input::all();
 
-		$this->registrationValidator->validate($input);
-
-		$this->User->create($input);
-
-		return Redirect::home();
+		if ($this->registrationForm->save($input)) {
+			return Redirect::home();
+		} else {
+			return Redirect::back()
+				->withInput()
+				->withErrors($this->registrationForm->errors())
+				->with('status', 'error');
+		}
 	}
 
 }

@@ -1,18 +1,6 @@
 <?php
 
-use Prijs\Service\Form\LoginValidator;
-
 class SessionsController extends \BaseController {
-
-	/**
-	 * @var Prijs\Service\Form\LoginValidator
-	 */
-	private $loginValidator;
-
-	public function __construct(LoginValidator $loginValidator)
-	{
-		$this->loginValidator = $loginValidator;
-	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -36,8 +24,6 @@ class SessionsController extends \BaseController {
 	public function store()
 	{
 		$input = Input::only('email', 'password');
-
-		$this->loginValidator->validate($input);
 
 		if (Auth::attempt($input)) {
 			Notification::success("Successfully signed in.");
