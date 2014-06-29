@@ -43,6 +43,7 @@
 	},
 	"minimum-stability": "stable",
 	"require-dev": {
-		"way/generators": "2.*"
+		"way/generators": "2.*",
+		"phpunit/phpunit": "3.7.*"
 	}
 }

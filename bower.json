@@ -1,0 +1,6 @@
+{
+  "name": "Prijs",
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}

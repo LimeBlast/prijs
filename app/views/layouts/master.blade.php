@@ -11,8 +11,7 @@
 		@show
 	</title>
 
-	<link href="/css/bootstrap.slate.min.css" rel="stylesheet">
-	<link href="/css/style.css" rel="stylesheet">
+	<link href="/assets/stylesheets/frontend.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,8 +23,7 @@
 	@yield('content')
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/assets/javascript/frontend.js"></script>
 
 </body>
 </html>
