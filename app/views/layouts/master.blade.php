@@ -23,6 +23,8 @@
 	@yield('content')
 </div>
 
+<script src="/assets/javascript/jquery/jquery.min.js"></script>
+<script src="/assets/javascript/bootstrap/bootstrap.min.js"></script>
 <script src="/assets/javascript/frontend.js"></script>
 
 </body>

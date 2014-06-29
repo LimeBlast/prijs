@@ -6,11 +6,27 @@ module.exports = function (grunt) {
 
         // Task configuration
         copy: {
-            main: {
+            boostrap_fonts: {
                 expand: true,
                 cwd: 'bower_components/bootstrap/fonts/',
                 src: '**',
                 dest: 'public/assets/fonts/',
+                flatten: true,
+                filter: 'isFile'
+            },
+            jquery: {
+                expand: true,
+                cwd: 'bower_components/jquery/dist/',
+                src: '**',
+                dest: 'public/assets/javascript/jquery/',
+                flatten: true,
+                filter: 'isFile'
+            },
+            bootstrap_js: {
+                expand: true,
+                cwd: 'bower_components/bootstrap/dist/js/',
+                src: '**',
+                dest: 'public/assets/javascript/bootstrap/',
                 flatten: true,
                 filter: 'isFile'
             }
@@ -42,16 +58,14 @@ module.exports = function (grunt) {
                     compress: true  //minifying the result
                 },
                 files: {
-                    //compiling frontend.less into frontend.css
                     "./public/assets/stylesheets/frontend.css": "./app/assets/stylesheets/frontend.less",
-                    //compiling backend.less into backend.css
                     "./public/assets/stylesheets/backend.css": "./app/assets/stylesheets/backend.less"
                 }
             }
         },
         uglify: {
             options: {
-                mangle: false  // Use if you want the names of your functions and variables unchanged
+                mangle: false // Use if you want the names of your functions and variables unchanged
             },
             frontend: {
                 files: {
@@ -66,7 +80,7 @@ module.exports = function (grunt) {
         },
         phpunit: {
             classes: {
-                dir: 'app/tests/'   //location of the tests
+                dir: 'app/tests/' //location of the tests
             },
             options: {
                 bin: 'vendor/bin/phpunit',
@@ -81,9 +95,9 @@ module.exports = function (grunt) {
                     './bower_components/bootstrap/dist/js/bootstrap.js',
                     './app/assets/javascript/frontend.js'
                 ],
-                tasks: ['concat:js_frontend', 'uglify:frontend'],     //tasks to run
+                tasks: ['concat:js_frontend', 'uglify:frontend'],
                 options: {
-                    livereload: true                        //reloads the browser
+                    livereload: true
                 }
             },
             js_backend: {
@@ -93,16 +107,16 @@ module.exports = function (grunt) {
                     './bower_components/bootstrap/dist/js/bootstrap.js',
                     './app/assets/javascript/backend.js'
                 ],
-                tasks: ['concat:js_backend', 'uglify:backend'],     //tasks to run
+                tasks: ['concat:js_backend', 'uglify:backend'],
                 options: {
-                    livereload: true                        //reloads the browser
+                    livereload: true
                 }
             },
             less: {
-                files: ['./app/assets/stylesheets/*.less'],  //watched files
-                tasks: ['less'],                          //tasks to run
+                files: ['./app/assets/stylesheets/*.less'],
+                tasks: ['less'],
                 options: {
-                    livereload: true                        //reloads the browser
+                    livereload: true
                 }
             },
             tests: {
