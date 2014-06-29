@@ -11,7 +11,7 @@
 		@show
 	</title>
 
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap.slate.min.css" rel="stylesheet">
 	<link href="/css/style.css" rel="stylesheet">
 </head>
 
